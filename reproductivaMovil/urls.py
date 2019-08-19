@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
+from django.contrib.auth import logout
+
 from reproductivaMovil import settings
 from reproductivaApp import views
 from django.conf.urls.static import static
-from django.contrib.auth.views import auth_login, logout_then_login, auth_logout
+from django.contrib.auth.views import auth_login, logout_then_login, auth_logout, LoginView, LogoutView
 
 urlpatterns = [
     url(r'^$', views.main, name="main"),
@@ -38,8 +40,10 @@ urlpatterns = [
     url(r'^entrada_blog/$', views.verEntradaBlog, name="entrada_blog"),
     url(r'^comentario_blog/$', views.agregarComentarioBlog, name="comentario_blog"),
     url(r'^blog_list/(?P<id_post>\w{0,50})/$', views.entradas_blog, name="blog_list"),
-    url(r'^login', auth_login, {'template_name': './page-login.html'}, name="login"),
-    url(r'^logout/$', auth_logout, {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
+    url(r'^login/$', LoginView.as_view(template_name='page-login.html'), name='login'),
+
+
+    url(r'^logout/$', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 
     url(r'^registrar/$', views.registrar, name="registrar"),
     url(r'^listaPost/', views.ListarEntradasBlog.as_view(),
