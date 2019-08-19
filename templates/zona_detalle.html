@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="header shadow-large header-light header-logo-app">
+		<a href="/" class="header-title" style="color:white;">Regresar</a>
+		<a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-angle-left"></i></a>
+		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-2"><i class="fas fa-bars"></i></a>
+    </div>
+
+ 	<div class="page-content header-clear-large ">
+    	<div class="content-box bg-white shadow-large ">
+			<h4 class="top-25">
+                <span class="fa fa-hospital color-yellow-light"></span>  Lista de centros médicos
+			</h4>
+			<p>
+				Seleccione su centro médico para ver más información.
+			</p>
+		</div>
+        <div class=" bg-white shadow-large content-box ">
+
+            <ul class="link-list bottom-0 fa ">
+
+                {% for item in detalleZona %}
+
+                <li><a href="{% url 'centro_ayuda'  %}?id_ca={{ item.id }}">
+
+
+
+
+                    <h5>{{ item.nombre_centro_ayuda }} </h5>
+
+                </a>
+
+                </li>
+                    {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

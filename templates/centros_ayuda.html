@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<div class="header shadow-large header-light header-logo-app">
+		<a href="/" class="header-title" style="color:white;">Regresar</a>
+		<a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-angle-left"></i></a>
+		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-2"><i class="fas fa-bars"></i></a>
+    </div>
+
+    <div class="page-content header-clear-larger">
+
+
+
+    <div class="content-box shadow-large bg-white">
+            <div class="top-25 bottom-25">
+                {% for item in caList %}
+                <h4 class="  regularbold center-text"><span class=" fa fa-hospital color-yellow-light"></span>  {{ item.nombre_centro_ayuda }}</h4>
+                <p>
+                   A continuación encontrará información sobre este centro médico.
+                </p>
+                <div class="decoration"></div>
+                <div class="accordion accordion-style-1  ">
+                  <a href="#" class="color-white font-14  button-magenta button-rounded " data-accordion="accordion-2"><span class="fa fa-user-circle color-yellow-light "></span> INFORMACIÓN DE CONTACTO<i class="fa fa-angle-down"></i></a>
+                    <div class="accordion-content " id="accordion-2">
+                        <p class="color-black">
+
+Información en internet.
+                        </p>
+                        <p class="color-black "> <span class="fa fa-laptop"></span> Sitio Web: <span class="color-black">{{ item.sitio_web }}</span></p>
+                        <p class="color-black "> <span class="fa fa-address-card"></span> E-mail: <span class="color-black">{{ item.sitio_web }}</span> </p>
+                    </div>
+                    <a href="#" class="color-white font-14  button-magenta button-rounded" data-accordion="accordion-1"><span class="fa fa-map color-yellow-light "></span> DIRECCIÓN<i class="fa fa-angle-down"></i></a>
+                    <div class="accordion-content " id="accordion-1">
+                        <p class="color-black"> <span class="fa fa-hospital"></span>  {{ item.direccion }}</p>
+                    </div>
+
+                    <a href="#" class="color-white font-14  button-magenta button-rounded" data-accordion="accordion-3"><span class="fa fa-map-pin color-yellow-light "></span> GOOGLE MAPS<i class="fa fa-angle-down"></i></a>
+                    <div class="accordion-content" id="accordion-3">
+                        <p class="color-black">Utiliza Google Maps para llegar a tu destino. </p>
+                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3869.8645005333465!2d-87.18199168612703!3d14.085174990132375!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f6fa31d3b3299d9%3A0xb8475c823eac6d79!2sOPS%2FOMS+Honduras!5e0!3m2!1ses!2shn!4v1564958626041!5m2!1ses!2shn" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                   <br>
+                    </div>
+
+
+                    <a href="#" class="color-white font-14  button-magenta button-rounded" data-accordion="accordion-4"><span class="fa fa-phone color-yellow-light "></span> TELÉFONOS<i class="fa fa-angle-down"></i></a>
+                    <div class="accordion-content" id="accordion-4">
+
+                        <p class="bottom-0">This is the accordion content. You can add any content you want to it. Really, anything!</p>
+
+                        {% for item2 in telList %}
+                            <p class="color-black"><span  class="fa fa-phone"></span>  {{ item2.telefono }}</p>
+                            {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+	</div>
+
+
+
+
+
+{% endblock %}

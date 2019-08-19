@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    <!--INICIO DE CONTENIDO-->
+	<div class="page-content header-clear-larger">
+
+
+        <div class="page-login bg-white top-0">
+            <span class="fa fa-venus-mars color-magenta-dark font-24 center-text top-10"></span>
+            <div class="content bottom-0">
+                <h3 class="uppercase ultrabold top-10 bottom-0">Login</h3>
+                <p class="smaller-text bottom-15">Hola visitante por favor, introduzca sus credenciales a continuación.</p>
+
+                 <form class="form-horizontal alinear" method="POST">
+                        {% csrf_token %}
+                <div class="page-login-field top-15">
+
+                    <i class="fa fa-user"></i>
+                    <input type="text" placeholder="username" name="username" id="inputEmail">
+                    <em>(Obligatorio)</em>
+
+                </div>
+                <div class="page-login-field bottom-20">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" placeholder="Password" name="password" id="inputPassword">
+                    <em>(Obligatorio)</em>
+                </div>
+                     <div>
+
+                         <button type="submit"
+                                            class="button button-full shadow-icon-large button-round button-s uppercase ultrabold button-magenta  ">
+                                        INICIAR SESIÓN
+                                    </button>
+
+                     </div>
+                 </form>
+                <div class="page-login-links bottom-20">
+                    <a class="forgot float-right" href="registrar"><i class="fa fa-user float-right"></i>Crear Cuenta</a>
+                    <a class="create float-left" href="page-forgot.html"><i class="fa fa-eye"></i>Recuperar Contraseña</a>
+                    <div class="clear"></div>
+                </div>
+
+            </div>
+        </div>
+
+
+
+	</div>
+<!--FIN DEL CONTENIDO-->
+
+
+
+{% endblock %}

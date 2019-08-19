@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="header shadow-large header-light header-logo-app">
+		<a href="/" class="header-title" style="color:white;">Regresar</a>
+		<a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-angle-left"></i></a>
+		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-2"><i class="fas fa-bars"></i></a>
+    </div>
+ 	<div class="page-content header-clear-large">
+    	<div class="content-box bg-white shadow-large ">
+			<h4 class="top-25">
+				 <span class="fa fa-hospital color-yellow-light"></span>  Zonas disponibles
+			</h4>
+			<p>
+			Seleccione una zona para buscar su centro médico.
+			</p>
+		</div>
+<div class="bg-white shadow-large content-box">
+
+            <ul class="link-list link-list-large bottom-0">
+                {% for item in zonaList %}
+
+                <li><a href="{% url 'zonas_detalle'  %}?id_zona={{ item.id }}"><span class="fa fa-map-marker color-yellow-light ">   </span>  <i class="fa fa-angle-right"></i><i ></i><span>{{ item.nombre_zona }}</span></a></li>
+                    {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+{% endblock %}

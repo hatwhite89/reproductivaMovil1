@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+
+    
+
+	<div class="page-content header-clear-larger">
+
+
+        <div class="page-login bg-white">
+            <div class="content bottom-0">
+                <h3 class="uppercase ultrabold bottom-0 top-10">Registro</h3>
+                <p class="smaller-text bottom-0">Regístrate ahora. ¡Es gratis!</p>
+
+
+                <div class="input-simple-2 has-icon input-green bottom-15">
+                    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit" class="button button-magenta bottom-30 button-full button-round shadow-icon-large button-s uppercase ultrabold">REGISTRAR CUENTA</button>
+        </form>
+                </div>
+
+
+                <div class="page-login-links bottom-10">
+                    <a class="forgot center-text" href="/login"><i class="fa fa-user float-right"></i>¿Ya estás registrado?</a>
+                    <div class="clear"></div>
+                </div>
+                 <div class="decoration"></div>
+                     </div>
+        </div>
+
+
+
+	</div>
+{% endblock %}

@@ -1,0 +1,120 @@
+
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+	<div class="header shadow-large header-light header-logo-app">
+		<a href="/" class="header-title" style="color: white;">Regresar</a>
+		<a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-angle-left"></i></a>
+		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-2"><i class="fas fa-bars"></i></a>
+    </div>
+	<div class="page-content header-clear-larger">
+
+		<div class="content-box bg-white shadow-large ">
+			<h4 class="top-25">
+				últimas entradas
+			</h4>
+			<p>
+
+Aquí puedes encontrar las últimas publicaciones.
+			</p>
+		</div>
+<!--INICIO DE CARGAR INFORMACION-->
+        <!--CARGAR LA LISTA DEL TOP DE ENTRADAS DEL BLOG-->
+         {% for item in listPost %}
+        <div class="content-box content-box-full bg-white shadow-large">
+            <div class="blog-post-home ">
+                <a href="#"><img src="/media/{{ item.imagen_portada }}" class="responsive-image"></a>
+                <strong class="font-17">{{ item.titulo }} </strong>
+              <span class="">Categoría:<a href="#" class="color-hightlight">{{ item.id_categoria }}</a></span>
+
+                    <div class="clear"></div>
+
+
+<div style="color: black;"> {{ item.resumen | safe }} <br></div>
+
+
+
+                <a href="#" class="blog-post-home-author">
+                    <img src={% static 'images/pictures/isolated/1.jpg'%} class="responsive-image">
+                    <span>Creado por:<u class="color-highlight">{{ item.usuario_creo }}</u></span>
+                    <br>
+                    <em>{{ item.fecha_creacion }}</em>
+                </a>
+                <center><a class=" button button-round button-magenta" href="{% url 'entrada_blog'  %}?id_post={{ item.id }}">Leer Ahora</a></center>
+            </div>
+        </div>
+        {% endfor %}
+<!--FIN DE CARGAR INFORMACION-->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <div class="content-box center-item center-object">
+{% if is_paginated %}
+  <ul class="pagination  ">
+    {% if page_obj.has_previous %}
+      <li ><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+    </div>
+
+
+    </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <script>function generadorAfterCss(selector, contenido) {
+  $("head").append(`<style>
+  ${selector} {
+    font-size: 0;
+  }
+  ${selector}:after {
+    content: "${contenido}";
+    font-size: 12px;
+  }</style>`);
+};
+
+function truncarCadenaConPalabraCompleta(cadena, tamaño, elipse) {
+  if (cadena.length <= tamaño) {
+    return cadena;
+  }
+  var elipse = elipse || "...";
+  var caracteres = 0;
+  var arreglo = cadena.split(" ");
+  for (i in arreglo) {
+    caracteres += arreglo[i].length;
+    if (caracteres > tamaño) {
+      arreglo.splice(i, arreglo.length);
+    }
+    caracteres++;
+  }
+  return arreglo.join(" ") + elipse;
+}
+
+function truncarContenidoDOM(selector, tamaño, elipse) {
+  var contenido = $(selector).text();
+  var resultado = truncarCadenaConPalabraCompleta(contenido, tamaño, elipse);
+  generadorAfterCss(selector, resultado);
+}
+
+truncarContenidoDOM(".recorte-10", 10);
+truncarContenidoDOM(".recorte-13", 13);
+truncarContenidoDOM(".recorte-15", 15);
+truncarContenidoDOM(".recorte-20", 20);
+truncarContenidoDOM(".recorte-100", 100);</script>
+
+{% endblock %}
