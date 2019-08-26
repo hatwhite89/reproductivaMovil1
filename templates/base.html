@@ -15,9 +15,12 @@
 
 <!--LOADER-->
 <div id="preloader" class="preloader-light">
-	<h1 class="center-text color-magenta-dark ultrabold uppercase bottom-0 fa-2x">REPRODUCTIVA</h1>
+
+
+    	<h1 class="center-text color-magenta-dark ultrabold uppercase bottom-0 fa-2x">REPRODUCTIVA</h1>
+        <img   height="120" class="center-object center-item center-text" src="{% static 'imagenes/logo.jpg' %}">
 	<div id="preload-spinner"></div>
-	<center><p class="fa fa-venus-mars color-magenta-light font-12 " ></p></center>
+
 	<em>Esto solo tomará un segundo. ¡Vale la pena!</em>
 </div>
 <!--LOADER-->
@@ -29,6 +32,7 @@
 
 	<div class="header shadow-large header-light header-logo-app">
 		<a href="index.html" class=""></a>
+
 		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-q"><i class="fas fa-bars"></i></a>
     </div>
 
@@ -37,12 +41,12 @@
         <div class="menu-scroll">
             <div class="menu-header">
                   {% if user.is_authenticated %}
-                     <a class="menu-logo2" href="/logout"></a>
+                     <a class="menu-logo2" href="/logout/"></a>
                 <h1>Salir</h1>
                 <p>Cerrar sesión</p>
                       {% else %}
 
-                      <a class="menu-logo" href="/login"></a>
+                      <a class="menu-logo" href="/login/"></a>
                 <h1>Entrar</h1>
                 <p>Iniciar sesión</p>
                 {% endif %}

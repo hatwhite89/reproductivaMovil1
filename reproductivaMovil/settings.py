@@ -27,7 +27,7 @@ SECRET_KEY = '28po)&pgok-em^)aus@00-5aro1$jd6r!l^m_y@-l3y&!yjn0d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1","192.168.2.102"]
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'reproductivaApp.apps.ReproductivaappConfig',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +133,7 @@ MEDIA_URL='media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR),"media")
 MEDIA_ROOT = 'media/'
 
-LOGIN_URL = reverse_lazy('login')
+LOGIN_URL = reverse_lazy('login/')
 LOGOUT_URL = reverse_lazy('logout')
 LOGIN_REDIRECT_URL = reverse_lazy('main')
 LOGOUT_REDIRECT_URL = reverse_lazy('main')
