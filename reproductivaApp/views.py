@@ -155,3 +155,7 @@ def mostrarAlbum(request):
 
     return render(request,'album.html',{'listaImagenes':album_detalle})
 
+def agradecimientos(request):
+
+
+    return render(request,'agradecimiento.html')

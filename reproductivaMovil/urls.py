@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^chat/$', views.chat, name="chat"),
     url(r'^listarAlbum/$', views.listarAlbumes, name="listarAlbum"),
     url(r'^album/$', views.mostrarAlbum, name="Album"),
+    url(r'^agradecimiento/$', views.agradecimientos, name="agradecimiento"),
     url(r'^ajax/chat/$', views.broadcast),
     url(r'^admin/', admin.site.urls),
     url(r'^post_list/$', views.post_list, name="post_list"),
