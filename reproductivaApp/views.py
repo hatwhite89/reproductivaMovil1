@@ -26,7 +26,7 @@ def broadcast(request):
 
 
 # Create your views here.
-
+#
 @login_required()
 def chat(request):
     usuario=request.user.username
