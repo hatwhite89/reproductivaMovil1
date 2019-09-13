@@ -48,7 +48,7 @@ def zonas_list(request):
 #LISTA EL DETALLE DE LAS ZONAS, O SEA LOS CENTROS DE AYUDA
 def zonas_detalle(request):
     id_zona= request.GET['id_zona']
-    detalle_zona= CentroAyuda.objects.filter(pk=id_zona)
+    detalle_zona= CentroAyuda.objects.filter(zona=id_zona)
 
     return  render(request,'zona_detalle.html',{'detalleZona':detalle_zona})
 
@@ -77,7 +77,7 @@ class ListarEntradasBlog(ListView):
     model = Post
     template_name = 'home-blog.html'
     context_object_name = 'listPost'
-    paginate_by = 5
+    paginate_by = 2
 
 
 def listar_entradas_blog(request):
