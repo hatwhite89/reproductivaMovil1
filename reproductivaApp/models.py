@@ -180,6 +180,18 @@ class Videos(models.Model):
     url=models.TextField()
     fecha_publicacion=models.DateField()
 
+#NOTICIAS
+class Noticias (models.Model):
+    titulo = models.CharField(max_length=200)
+    cuerpo = RichTextField()
+    resumen= RichTextField(null=True)
+    fecha_creacion =models.DateField()
+    estado=models.ForeignKey(Estado ,on_delete=models.CASCADE,)
+    imagen_portada=models.ImageField(upload_to='imagenes/', null=True)
+    usuario_creo= models.ForeignKey(User,on_delete=models.CASCADE,)
 
+
+    def __str__(self):
+        return self.titulo
 
 
