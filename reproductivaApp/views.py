@@ -4,7 +4,7 @@ import time
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
-from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda
+from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido
 from  django.http import  HttpResponse
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
@@ -159,3 +159,24 @@ def agradecimientos(request):
 
 
     return render(request,'agradecimiento.html')
+
+
+#el contenido nuevo
+#VER UNA ENTRADA DEL BLOG
+def verEntradaContenido(request):
+    id_post=request.GET['id_post']
+    entrada_blog =PostContenido.objects.filter(pk=id_post)
+    return render(request,'contenido.html',{'post':entrada_blog})
+
+def list_view_contenido(request):
+    id_contenido= request.GET['id_contenido']
+    lista_contenido_detalle=PostContenido.objects.filter(id_categoria=id_contenido)
+
+
+    return render(request,'list_contenido.html',{'caList':lista_contenido_detalle})
+
+def conteido_detalle(request):
+
+    id_archivo= request.GET['id_contenido']
+    archivo_list= PostContenido.objects.filter(pk=id_archivo)
+    return render(request,'contenido2.html',{'post':archivo_list})

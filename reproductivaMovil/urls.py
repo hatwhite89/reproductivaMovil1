@@ -39,7 +39,11 @@ urlpatterns = [
     url(r'^zonas_detalle/$', views.zonas_detalle, name="zonas_detalle"),
     url(r'^centro_ayuda/$', views.centro_ayuda, name="centro_ayuda"),
     url(r'^entrada_blog/$', views.verEntradaBlog, name="entrada_blog"),
+    url(r'^entrada_contenido/$', views.verEntradaContenido, name="entrada_contenido"),
     url(r'^comentario_blog/$', views.agregarComentarioBlog, name="comentario_blog"),
+
+    url(r'^listar_contenido/$', views.list_view_contenido, name="listar_contenido"),
+    url(r'^contenido_detalle/$', views.conteido_detalle, name="contenido_detalle"),
     url(r'^blog_list/(?P<id_post>\w{0,50})/$', views.entradas_blog, name="blog_list"),
     url(r'^login/$', LoginView.as_view(template_name='page-login.html'), name='login'),
 

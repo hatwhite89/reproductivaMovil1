@@ -150,6 +150,29 @@ class ImagenesGaleriaAlbum(models.Model):
     def __str__(self):
         return self.titulo_imagen
 
+#CONTENIDO DEL MENU
+
+class CategoriaPostContenido(models.Model):
+    categoria= models.CharField(max_length=200)
+    descripcion= models.TextField()
+    fecha_creacion=models.DateField()
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE,)
+
+    def __str__(self):
+        return self.categoria
+
+class PostContenido (models.Model):
+    titulo = models.CharField(max_length=200)
+    cuerpo = RichTextField()
+    resumen= RichTextField(null=True)
+    fecha_creacion =models.DateField()
+    estado=models.ForeignKey(Estado ,on_delete=models.CASCADE,)
+    imagen_portada=models.ImageField(upload_to='imagenes/', null=True)
+    usuario_creo= models.ForeignKey(User,on_delete=models.CASCADE,)
+    id_categoria=models.ForeignKey(CategoriaPostContenido, on_delete=models.CASCADE,)
+
+    def __str__(self):
+        return self.titulo
 
 
 
