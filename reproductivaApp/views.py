@@ -171,9 +171,10 @@ def verEntradaContenido(request):
 def list_view_contenido(request):
     id_contenido= request.GET['id_contenido']
     lista_contenido_detalle=PostContenido.objects.filter(id_categoria=id_contenido)
+    titulo = PostContenido.objects.filter(id_categoria=id_contenido)
 
 
-    return render(request,'list_contenido.html',{'caList':lista_contenido_detalle})
+    return render(request,'list_contenido.html',{'caList':lista_contenido_detalle,'titulo':titulo})
 
 def conteido_detalle(request):
 
