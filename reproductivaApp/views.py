@@ -4,7 +4,7 @@ import time
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
-from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos
+from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria
 from  django.http import  HttpResponse
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
@@ -185,3 +185,19 @@ def conteido_detalle(request):
 def videos(request):
     list_video= Videos.objects.all()
     return render(request,'videos.html',{'videos':list_video})
+
+
+#CONTENIDO CON SUBCATEGORIA
+def list_view_contenido_subcategoria(request):
+    id_contenido= request.GET['id_contenido']
+    lista_contenido_detalle=ContenidoSubCategoria.objects.filter(categoriaPrincipal=id_contenido)
+
+
+
+    return render(request,'list_contenido_sub.html',{'caList':lista_contenido_detalle})
+
+def contenido_detalle_sub(request):
+
+    id_archivo= request.GET['id_contenido']
+    archivo_list= PostContenidoSubCategoria.objects.filter(pk=id_archivo)
+    return render(request,'contenido2.html',{'post':archivo_list})

@@ -43,7 +43,9 @@ urlpatterns = [
     url(r'^comentario_blog/$', views.agregarComentarioBlog, name="comentario_blog"),
     url(r'^videos/$', views.videos, name="videos"),
     url(r'^listar_contenido/$', views.list_view_contenido, name="listar_contenido"),
+    url(r'^listar_contenido2/$', views.list_view_contenido_subcategoria, name="listar_contenido2"),
     url(r'^contenido_detalle/$', views.conteido_detalle, name="contenido_detalle"),
+    url(r'^contenido_detalle_sub/$', views.contenido_detalle_sub, name="contenido_detalle_sub"),
     url(r'^blog_list/(?P<id_post>\w{0,50})/$', views.entradas_blog, name="blog_list"),
     url(r'^login/$', LoginView.as_view(template_name='page-login.html'), name='login'),
 
