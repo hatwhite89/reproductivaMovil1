@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'^entrada_blog/$', views.verEntradaBlog, name="entrada_blog"),
     url(r'^entrada_contenido/$', views.verEntradaContenido, name="entrada_contenido"),
     url(r'^comentario_blog/$', views.agregarComentarioBlog, name="comentario_blog"),
-
+    url(r'^videos/$', views.videos, name="videos"),
     url(r'^listar_contenido/$', views.list_view_contenido, name="listar_contenido"),
     url(r'^contenido_detalle/$', views.conteido_detalle, name="contenido_detalle"),
     url(r'^blog_list/(?P<id_post>\w{0,50})/$', views.entradas_blog, name="blog_list"),

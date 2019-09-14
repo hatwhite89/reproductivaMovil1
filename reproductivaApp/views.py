@@ -4,7 +4,7 @@ import time
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
-from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido
+from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos
 from  django.http import  HttpResponse
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
@@ -180,3 +180,7 @@ def conteido_detalle(request):
     id_archivo= request.GET['id_contenido']
     archivo_list= PostContenido.objects.filter(pk=id_archivo)
     return render(request,'contenido2.html',{'post':archivo_list})
+
+def videos(request):
+    list_video= Videos.objects.all()
+    return render(request,'videos.html',{'videos':list_video})
