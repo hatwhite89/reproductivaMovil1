@@ -101,7 +101,7 @@ def registrar(request):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            return render(request,'main',{'bandera':"verdadero"})
+            return render(request,'index.html',{'bandera':"verdadero"})
     form = FormularioRegistro()
     return render(request,'page-signup.html',{'form':form})
 
