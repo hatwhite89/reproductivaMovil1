@@ -208,6 +208,6 @@ def post_contenido_detalle_sub(request):
 #ESTOS SON LOS POST
 
     id_archivo= request.GET['id_contenido']
-    archivo_list= PostContenidoSubCategoria.objects.filter(id_categoria=id_archivo)
+    archivo_list= PostContenidoSubCategoria.objects.filter(pk=id_archivo)
     return render(request,'contenido2.html',{'post':archivo_list})
 
