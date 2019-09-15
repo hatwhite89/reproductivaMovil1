@@ -33,13 +33,7 @@ class CategoriaPost(models.Model):
 
 
 
-#COMENTARIOS DE POST
-class ComentariosPost(models.Model):
-    cuerpo= RichTextField()
-    fecha_publicacion=models.DateField()
-    usuario= models.CharField(max_length=50)
-    estado= models.ForeignKey(Estado, on_delete=models.CASCADE,)
-    id_post = models.ForeignKey(Post,  on_delete=models.CASCADE,)
+
 
 
 #SUBIR IMAGENES PARA GALERIAS
@@ -206,9 +200,11 @@ class Noticias (models.Model):
 
 #BLOGUEROS
 class Bloguero (models.Model):
-    nombre = models.CharField(max_length=200)
-    descripcion =models.TextField()
+    nombre = models.CharField(max_length=200,null=True)
+    descripcion =models.TextField(null=True)
     foto=models.ImageField(upload_to='imagenes/', null=True)
+    def __str__(self):
+        return self.nombre
 
 #POST DEL BLOG
 class Post (models.Model):
@@ -223,3 +219,11 @@ class Post (models.Model):
 
     def __str__(self):
         return self.titulo
+
+    # COMENTARIOS DE POST
+class ComentariosPost(models.Model):
+    cuerpo = RichTextField()
+    fecha_publicacion = models.DateField()
+    usuario = models.CharField(max_length=50)
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE, )
+    id_post = models.ForeignKey(Post, on_delete=models.CASCADE, )
