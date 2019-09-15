@@ -9,16 +9,16 @@
  	<div class="page-content header-clear-large">
     	<div class="content-box bg-white shadow-large ">
 			<h4 class="top-25">
-				 <span class=""></span>
+				 <span class=""></span>a
 			</h4>
 
 		</div>
 <div class="bg-white shadow-large content-box">
 
             <ul class="link-list link-list-large bottom-0">
-                {% for item in caList %}
+                {% for item in post %}
 
-                <li><a href="{% url 'contenido_detalle_sub'  %}?id_contenido={{ item.id }}"><span class="fa fa-hand-pointer color-yellow-light ">   </span>  <i class=""></i><i ></i><span>{{ item.categoria}}</span></a></li>
+                <li><a href="{% url 'post_contenido_detalle_sub'  %}?id_contenido={{ item.id }}"><span class="fa fa-hand-pointer color-yellow-light ">   </span>  <i class=""></i><i ></i><span>{{ item.titulo }}</span></a></li>
                     {% endfor %}
 
             </ul>

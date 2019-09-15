@@ -43,9 +43,12 @@ urlpatterns = [
     url(r'^comentario_blog/$', views.agregarComentarioBlog, name="comentario_blog"),
     url(r'^videos/$', views.videos, name="videos"),
     url(r'^listar_contenido/$', views.list_view_contenido, name="listar_contenido"),
+    url(r'^listar_contenido_sub2/$', views.contenido_detalle_sub, name="listar_contenido_sub2"),
     url(r'^listar_contenido2/$', views.list_view_contenido_subcategoria, name="listar_contenido2"),
     url(r'^contenido_detalle/$', views.conteido_detalle, name="contenido_detalle"),
     url(r'^contenido_detalle_sub/$', views.contenido_detalle_sub, name="contenido_detalle_sub"),
+    url(r'^post_contenido_detalle_sub/$', views.post_contenido_detalle_sub, name="post_contenido_detalle_sub"),
+
     url(r'^blog_list/(?P<id_post>\w{0,50})/$', views.entradas_blog, name="blog_list"),
     url(r'^login/$', LoginView.as_view(template_name='page-login.html'), name='login'),
 
@@ -53,8 +56,7 @@ urlpatterns = [
     url(r'^logout/$', LogoutView.as_view(), {'next_page': settings.LOGOUT_REDIRECT_URL}, name='logout'),
 
     url(r'^registrar/$', views.registrar, name="registrar"),
-    url(r'^listaPost/', views.ListarEntradasBlog.as_view(),
-        name="ListaPost"),
+    url(r'^listaPost/$', views.listar_entradas_blog, name="listaPost"),
 
 ]
 # SI EL DEBUG ES TRUE ENTONCES QUE TOME LA CARPETA STATIC_URL, DE LO CONTRARIO QUE UTILIZE LA CARPETA MEDIA_URL

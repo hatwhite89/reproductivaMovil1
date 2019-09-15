@@ -22,15 +22,15 @@ pusher = Pusher(app_id=u'838312', key=u'c230b932004655cce3ff', secret=u'ab9b3c8e
 def broadcast(request):
 
     pusher.trigger(u'a_channel', u'an_event', {u'name': request.user.username, u'message': request.POST['message']})
-    return HttpResponse("done");
+    return HttpResponse("done")
 
 
 # Create your views here.
 #
-@login_required()
+
 def chat(request):
     usuario=request.user.username
-    return render(request,"chat.html",{'usuario':usuario});
+    return render(request,"chat.html",{'usuario':usuario})
 
 # Create your views here.
 
@@ -180,6 +180,7 @@ def conteido_detalle(request):
 
     id_archivo= request.GET['id_contenido']
     archivo_list= PostContenido.objects.filter(pk=id_archivo)
+
     return render(request,'contenido2.html',{'post':archivo_list})
 
 def videos(request):
@@ -197,7 +198,16 @@ def list_view_contenido_subcategoria(request):
     return render(request,'list_contenido_sub.html',{'caList':lista_contenido_detalle})
 
 def contenido_detalle_sub(request):
+#ESTA ES OTRA LISTA
 
     id_archivo= request.GET['id_contenido']
-    archivo_list= PostContenidoSubCategoria.objects.filter(pk=id_archivo)
+    archivo_list= PostContenidoSubCategoria.objects.filter(id_categoria=id_archivo)
+    return render(request,'list_contenido_sub2.html',{'post':archivo_list})
+
+def post_contenido_detalle_sub(request):
+#ESTOS SON LOS POST
+
+    id_archivo= request.GET['id_contenido']
+    archivo_list= PostContenidoSubCategoria.objects.filter(id_categoria=id_archivo)
     return render(request,'contenido2.html',{'post':archivo_list})
+

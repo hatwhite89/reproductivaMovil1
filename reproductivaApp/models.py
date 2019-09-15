@@ -31,19 +31,7 @@ class CategoriaPost(models.Model):
     def __str__(self):
         return self.categoria
 
-#POST DEL BLOG
-class Post (models.Model):
-    titulo = models.CharField(max_length=200)
-    cuerpo = RichTextField()
-    resumen= RichTextField(null=True)
-    fecha_creacion =models.DateField()
-    estado=models.ForeignKey(Estado ,on_delete=models.CASCADE,)
-    imagen_portada=models.ImageField(upload_to='imagenes/', null=True)
-    usuario_creo= models.ForeignKey(User,on_delete=models.CASCADE,)
-    id_categoria=models.ForeignKey(CategoriaPost, on_delete=models.CASCADE,)
 
-    def __str__(self):
-        return self.titulo
 
 #COMENTARIOS DE POST
 class ComentariosPost(models.Model):
@@ -216,4 +204,22 @@ class Noticias (models.Model):
     def __str__(self):
         return self.titulo
 
+#BLOGUEROS
+class Bloguero (models.Model):
+    nombre = models.CharField(max_length=200)
+    descripcion =models.TextField()
+    foto=models.ImageField(upload_to='imagenes/', null=True)
 
+#POST DEL BLOG
+class Post (models.Model):
+    titulo = models.CharField(max_length=200)
+    cuerpo = RichTextField()
+    resumen= RichTextField(null=True)
+    fecha_creacion =models.DateField()
+    estado=models.ForeignKey(Estado ,on_delete=models.CASCADE,)
+    imagen_portada=models.ImageField(upload_to='imagenes/', null=True)
+    bloguero= models.ForeignKey(Bloguero,on_delete=models.CASCADE,)
+    id_categoria=models.ForeignKey(CategoriaPost, on_delete=models.CASCADE,)
+
+    def __str__(self):
+        return self.titulo
