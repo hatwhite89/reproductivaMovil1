@@ -5,7 +5,7 @@
 
 	<div class="header shadow-large header-light header-logo-app">
 		<a href="#" class="back-button header-title" style="color: white;">Regresar</a>
-		<a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-angle-left"></i></a>
+		<a href="# " class="back-button header-icon header-icon-1"><i class="fas fa-angle-left"></i></a>
 		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-2"><i class="fas fa-bars"></i></a>
     </div>
 	<div class="page-content header-clear-larger">
@@ -75,46 +75,9 @@ Aquí puedes encontrar las últimas publicaciones.
 
 
     </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-    <script>function generadorAfterCss(selector, contenido) {
-  $("head").append(`<style>
-  ${selector} {
-    font-size: 0;
-  }
-  ${selector}:after {
-    content: "${contenido}";
-    font-size: 12px;
-  }</style>`);
-};
 
-function truncarCadenaConPalabraCompleta(cadena, tamaño, elipse) {
-  if (cadena.length <= tamaño) {
-    return cadena;
-  }
-  var elipse = elipse || "...";
-  var caracteres = 0;
-  var arreglo = cadena.split(" ");
-  for (i in arreglo) {
-    caracteres += arreglo[i].length;
-    if (caracteres > tamaño) {
-      arreglo.splice(i, arreglo.length);
-    }
-    caracteres++;
-  }
-  return arreglo.join(" ") + elipse;
-}
 
-function truncarContenidoDOM(selector, tamaño, elipse) {
-  var contenido = $(selector).text();
-  var resultado = truncarCadenaConPalabraCompleta(contenido, tamaño, elipse);
-  generadorAfterCss(selector, resultado);
-}
 
-truncarContenidoDOM(".recorte-10", 10);
-truncarContenidoDOM(".recorte-13", 13);
-truncarContenidoDOM(".recorte-15", 15);
-truncarContenidoDOM(".recorte-20", 20);
-truncarContenidoDOM(".recorte-100", 100);</script>
 
 {% endblock %}
