@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 import time
 
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
 from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria
@@ -65,7 +66,16 @@ def post_list(request):
 
 
 def login(request):
-    return render(request,'page-login.html',{})
+    usuario = request.POST['username']
+    passwd = request.POST['password']
+
+
+    user = authenticate(username=usuario, password=passwd)
+    if user is None:
+        return render(request, 'page-login.html', {"bandera":"ERROR"})
+    else:
+
+        return render(request,'page-login.html',{})
 
 #VISTA PARA MOSTRAR TODAS LAS ENTRADAS DEL BLOG
 
