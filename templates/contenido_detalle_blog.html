@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% load staticfiles %}
+
+
+
+
+
+
+<!--INICIO DEL CONTENIDO DEL BLOG-->
+	<div class="page-content header-clear-larger">
+	<div class="header shadow-large header-light header-logo-app">
+		<a href="#" class=" back-button header-title" style="color: white;">Regresar</a>
+		<a href="#" class=" back-button header-icon header-icon-1"><i class="fas fa-angle-left"></i></a>
+		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-2"><i class="fas fa-bars"></i></a>
+    </div>
+        <div class="content-box content-box-full bg-white">
+              {% for item in post %}
+            <div class="blog-post-home">
+                <a href="#"><img src="/media/{{ item.imagen_portada }}" data-src="/media/{{ item.imagen_portada }}" class="preload-image responsive-image"></a>
+                <strong class="font-17">{{ item.titulo }}</strong>
+                <span>Categoría:<a href="#" class="color-blue-dark"> {{ item.id_categoria }}</a></span>
+                <div class="blog-post-stats">
+
+                    <a href="#"><i class="fa fa-eye color-blue-light"></i>623</a>
+                    <a href="#"><i class="fa fa-comments color-brown-light"></i>{{ contador }}</a>
+                    <div class="clear"></div>
+                </div>
+                {{ item.cuerpo | safe }}
+            </div>
+    <div class="content-box content-box-full bg-white">
+             <div class="row">
+                 <div class="colM"><img  class="responsive-image round-image" src="/media/imagenes/1.jpg"></div>
+                 <div class="colM"><h1 class="center-text">{{ item.bloguero.nombre }}</h1></div>
+                 <br>
+                  <div class="colM"><p class="center-text">{{ item.bloguero.descripcion }}</p></div>
+             </div>
+         </div>
+            {% endfor %}
+
+<a href="#" data-menu="question-1" data-menu-type="menu-box-modal" class=" button button-round button-xs button-magenta uppercase ultrabold button-center shadow-icon-small">COMENTAR</a>
+
+        </div>
+
+<!--COMIENZO DE LOS COMENTARIOS-->
+    <div>
+
+    </div>
+
+<div class="timeline-body bottom-0">
+    {% for item in comentariosList %}
+
+            <div class="timeline-deco"></div>
+            <div class="timeline-item top-10">
+                <i class="far fa-user bg-yellow-light scale-hover"></i>
+
+                <div class="timeline-item-content">
+                       <span class="bold">{{ item.usuario }} dice:</span>
+                    <h5 class="thin center-text">
+                       {{ item.cuerpo }}
+                    </h5>
+
+<p>publicado el {{ item.fecha_publicacion }}</p>
+                </div>
+
+            </div>
+
+
+
+{% endfor %}  </div>
+<!--FINAL DE LOS COMENTARIOS-->
+
+
+
+
+
+
+<!--FIN DEL FOOTER-->
+
+<!--FIN DEL CONTENIDO DEL BLOG-->
+
+
+
+
+
+
+
+</div>
+
+<!--INICIO VENTANA DE COMENTARIOS-->
+
+<div class="menu menu-box-modal gradient-body-white shadow-large" id="question-1" data-menu-height="315">
+    <div id="wrapper">
+
+        <form action="/comentario_blog" method="get">
+            <div class="input-simple-1 textarea has-icon bottom-30">
+
+
+            <i class="fa fa-edit "></i><em class="bg-magenta-dark bold font-14 center-text ">Escriba su mensaje </em>
+             <textarea id="cuerpo" name="cuerpo" class="textarea-simple-1 " placeholder="Escribir..."></textarea>
+
+            <input id="id_post" name="id_post" value="{{ id_post }}" type="text" style="visibility:hidden" >
+
+
+            </div>
+               <div class="clear"></div>
+
+
+  <input type="submit" value="AGREGAR COMENTARIO" class="button button-round  button-magenta">
+
+
+           </form>
+        </div>
+
+    </div>
+
+<!--FIN VENTANA DE COMENTARIOS-->
+{% endblock %}
+
+
+

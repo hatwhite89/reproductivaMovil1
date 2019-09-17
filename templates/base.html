@@ -79,7 +79,22 @@
                 <a class="menu-item" href="{% url 'agradecimiento'  %}"><i class="fa gradient-yellow-dark fa-hand-holding-heart"></i>AGRADECIMIENTOS</a>
 
              <a class="menu-item" href="{% url 'zonas_list'  %}"><i class="fa gradient-yellow-dark fa-home"></i>CENTROS MEDICOS</a>
-             <a class="menu-item" href="{% url 'listaPost'  %}"><i class="fa gradient-yellow-dark fa-book"></i>BLOG</a>
+
+
+                <a data-submenu="submenu-4" class="menu-item" href="#"><i class="fa gradient-yellow-dark fa-book"></i>BLOG<span></span></a>
+
+              <div id="submenu-4" class="submenu">
+
+                         <a href="{% url 'lista_categoria_blog'  %}?id_contenido=2">Salud sexual</a>
+                         <a href="{% url 'lista_categoria_blog'  %}?id_contenido=3">Maternidad</a>
+                         <a href="{% url 'lista_categoria_blog'  %}?id_contenido=4">Crianza</a>
+                         <a href="{% url 'lista_categoria_blog'  %}?id_contenido=5">Nuevas masculinidades</a>
+                    <a href="{% url 'lista_categoria_blog'  %}?id_contenido=6">Rincón feminista</a>
+                    <a href="{% url 'lista_categoria_blog'  %}?id_contenido=7">Diversidad</a>
+                </div>
+
+
+
             <a class="menu-item" href="{% url 'archivos_list'  %}"><i class="fa gradient-yellow-dark fa-folder"></i>RECURSOS</a>
              <a data-submenu="submenu-1" class="menu-item" href="#"><i class="fa gradient-yellow-dark fa-image"></i>MULTIMEDIA<span></span></a>
                 <div id="submenu-1" class="submenu">

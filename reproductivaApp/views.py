@@ -5,7 +5,7 @@ import time
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
-from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria
+from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria,CategoriaPost
 from  django.http import  HttpResponse
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
@@ -36,10 +36,8 @@ def chat(request):
 # Create your views here.
 
 def main(request):
-    menu_principal= MenuPrincipal.objects.all()
-    menu_redes=MenuRedesSociales.objects.all()
 
-    return render(request,'index.html',{'menu_list': menu_principal,'redes_list': menu_redes})
+    return render(request,'index.html',)
 
 #DEBE LISTAR TODAS LAS ZONAS PARA LOS CENTROS DE AYUDA
 def zonas_list(request):
@@ -221,3 +219,14 @@ def post_contenido_detalle_sub(request):
     archivo_list= PostContenidoSubCategoria.objects.filter(pk=id_archivo)
     return render(request,'contenido2.html',{'post':archivo_list})
 
+def lista_categorias_blog(request):
+    id_contenido = request.GET['id_contenido']
+    lista_categoria= Post.objects.filter(id_categoria=id_contenido)
+    return render(request,'lista_categoria_blog.html',{'lista_ca':lista_categoria})
+
+def blog_detalle_tema(request):
+#ESTOS SON LOS POST
+
+    id_archivo= request.GET['id_contenido']
+    archivo_list= Post.objects.filter(pk=id_archivo)
+    return render(request,'contenido_detalle_blog.html',{'post':archivo_list})

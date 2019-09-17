@@ -48,7 +48,8 @@ urlpatterns = [
     url(r'^contenido_detalle/$', views.conteido_detalle, name="contenido_detalle"),
     url(r'^contenido_detalle_sub/$', views.contenido_detalle_sub, name="contenido_detalle_sub"),
     url(r'^post_contenido_detalle_sub/$', views.post_contenido_detalle_sub, name="post_contenido_detalle_sub"),
-
+    url(r'^lista_categoria_blog/$', views.lista_categorias_blog, name="lista_categoria_blog"),
+    url(r'^blog_detalle_tema/$', views.blog_detalle_tema, name="blog_detalle_tema"),
     url(r'^blog_list/(?P<id_post>\w{0,50})/$', views.entradas_blog, name="blog_list"),
     url(r'^login/$', LoginView.as_view(template_name='page-login.html'), name='login'),
 

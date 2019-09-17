@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="header shadow-large header-light header-logo-app">
+		<a href="#" class="back-button header-title" style="color:white;">Regresar</a>
+		<a href="#" class="back-button header-icon header-icon-1"><i class="fas fa-angle-left"></i></a>
+		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-2"><i class="fas fa-bars"></i></a>
+    </div>
+ 	<div class="page-content header-clear-large">
+    	<div class="content-box bg-white shadow-large ">
+			<h4 class="top-25">
+				 <span class=""></span>
+			</h4>
+
+		</div>
+<div class="bg-white shadow-large content-box">
+
+            <ul class="link-list link-list-large bottom-0">
+                {% for item in lista_ca %}
+
+                <li><a href="{% url 'blog_detalle_tema'  %}?id_contenido={{ item.id }}"><span class="fa fa-hand-pointer color-yellow-light ">   </span>  <i class=""></i><i ></i><span>{{ item.titulo}}</span></a></li>
+                    {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+{% endblock %}
