@@ -246,7 +246,7 @@ class contacto(View):
             email=request.POST['correo']
             titulo=request.POST['asunto']
             contenid = request.POST['contenido']
-            email = EmailMessage(titulo, contenid, to=[email])
+            email = EmailMessage(titulo, contenid, to=['reproductivahn@gmail.com'])
             #email.body=form.contenido
             email.send()
 
