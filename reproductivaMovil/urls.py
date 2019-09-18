@@ -25,6 +25,7 @@ from django.contrib.auth.views import auth_login, logout_then_login, auth_logout
 
 urlpatterns = [
     url(r'^$', views.main, name="main"),
+url(r'^salto_mensaje/$', views.salto_mensaje, name="salto_mensaje"),
     url(r'^chat/$', views.chat, name="chat"),
     url(r'^listarAlbum/$', views.listarAlbumes, name="listarAlbum"),
     url(r'^album/$', views.mostrarAlbum, name="Album"),

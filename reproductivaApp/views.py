@@ -250,5 +250,10 @@ class contacto(View):
             #email.body=form.contenido
             email.send()
 
-            return render(request,'index.html',{'mensaje':'verdadero'})
+            return HttpResponseRedirect('/salto_mensaje')
+
         return render(request,'email.html',{'forma':form})
+
+def salto_mensaje(request):
+
+    return render(request,'index.html',{'mensaje':'verdadero'})
