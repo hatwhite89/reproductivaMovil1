@@ -1,15 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import time
-
+from django.core.mail import EmailMessage
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
+from django.views import View
+
 from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria,CategoriaPost
-from  django.http import  HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
-from reproductivaApp.forms import FormularioRegistro
+from reproductivaApp.forms import FormularioRegistro,correo
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
 
@@ -230,3 +232,23 @@ def blog_detalle_tema(request):
     id_archivo= request.GET['id_contenido']
     archivo_list= Post.objects.filter(pk=id_archivo)
     return render(request,'contenido_detalle_blog.html',{'post':archivo_list})
+
+
+class contacto(View):
+    def get(self,request):
+        form=correo()
+        return render(request,'email.html',{'forma':form})
+
+    def post(self,request):
+        form=correo(request.POST)
+        if form.is_valid():
+            datos=form.cleaned_data
+            email=request.POST['correo']
+            titulo=request.POST['asunto']
+            contenid = request.POST['contenido']
+            email = EmailMessage(titulo, contenid, to=[email])
+            #email.body=form.contenido
+            email.send()
+
+            return render(request,'index.html',{'mensaje':'verdadero'})
+        return render(request,'email.html',{'forma':form})

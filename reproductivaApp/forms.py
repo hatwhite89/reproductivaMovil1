@@ -15,3 +15,9 @@ class FormularioRegistro(UserCreationForm):
 
         fields= ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', )
 
+class correo(forms.Form):
+
+    asunto=forms.CharField(required=True)
+    correo=forms.EmailField()
+    contenido=forms.CharField( widget=forms.Textarea)
+

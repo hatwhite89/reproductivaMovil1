@@ -141,3 +141,10 @@ LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 LOGIN_REDIRECT_URL = reverse_lazy('main')
 LOGOUT_REDIRECT_URL = reverse_lazy('main')
+
+#EMAIL
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'reproductivahn@gmail.com'
+EMAIL_HOST_PASSWORD = '@Reproductiva2019'
+EMAIL_PORT = 587

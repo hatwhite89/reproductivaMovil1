@@ -34,6 +34,8 @@
 		<a href="index.html" class=""></a>
 
 		<a data-menu="menu-1" data-menu-type="menu-sidebar-left-push" href="#" class="header-icon header-icon-q"><i class="fas fa-bars"></i></a>
+
+
     </div>
 
 	<div id="menu-1" class="menu menu-sidebar-left menu-settings" style="background-color:#755ea8;">
@@ -46,7 +48,7 @@
                 <p>Cerrar sesión</p>
                       {% else %}
 
-                      <a class="menu-logo" href="#"></a>
+                      <a class="menu-logo" href="/login/"></a>
                 <h1>Entrar</h1>
                 <p>Iniciar sesión</p>
                 {% endif %}
@@ -101,7 +103,8 @@
                     <a href="{% url 'listarAlbum'  %}">GALERIA</a>
                     <a href="{% url 'videos'  %}">VIDEOS</a>
                 </div>
-            <a class="menu-item" href="#"><i class="fa gradient-yellow-dark fa-laptop"></i>CHAT</a>
+
+            <a class="menu-item" href="{% url 'email'  %}"><i class="fa gradient-yellow-dark fa-laptop"></i>HAZ TU PREGUNTA</a>
 
              <a class="menu-item close-menu" href="#"><i class="fa gradient-red-dark fa-times"></i>Cerrar Menú</a>
 
@@ -109,9 +112,9 @@
 
                 <em class="menu-divider">Redes Sociales</em>
 
-
+<!--
                <a class="menu-item" href="https://api.whatsapp.com/send?phone=50433918971"><i class="fab whatsapp-bg fa-whatsapp"></i>WhatsApp</a>
-
+-->
                <a class="menu-item" href="https://www.facebook.com/ReproductivaHn/"><i class="fab facebook-bg fa-facebook-f"></i>Facebook</a>
                 <a class="menu-item" href="https://twitter.com/@reproductivahn"><i class="fab twitter-bg fa-twitter"></i>Twitter</a>
                 <a class="menu-item" href="https://www.instagram.com/reproductivahn/"><i class="fab instagram-bg fa-instagram"></i>Instagran</a>

@@ -58,6 +58,7 @@ urlpatterns = [
 
     url(r'^registrar/$', views.registrar, name="registrar"),
     url(r'^listaPost/$', views.listar_entradas_blog, name="listaPost"),
+    url(r'^email/$', views.contacto.as_view(), name="email"),
 
 ]
 # SI EL DEBUG ES TRUE ENTONCES QUE TOME LA CARPETA STATIC_URL, DE LO CONTRARIO QUE UTILIZE LA CARPETA MEDIA_URL
