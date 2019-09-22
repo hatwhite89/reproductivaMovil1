@@ -209,7 +209,7 @@ def videos(request):
 #CONTENIDO CON SUBCATEGORIA
 def list_view_contenido_subcategoria(request):
     id_contenido= request.GET['id_contenido']
-    id_contenido2 = request.GET['id_contenido2']
+  
     lista_contenido_detalle=ContenidoSubCategoria.objects.filter(categoriaPrincipal=id_contenido )
 
 
