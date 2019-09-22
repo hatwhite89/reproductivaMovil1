@@ -9,7 +9,7 @@ from django.db import models
 from django.contrib import admin
 
 # Register your models here.
-from reproductivaApp.models import CentroAyuda,Post,CategoriaPost,Estado,CategoriaImagen,ImagenesGaleria,MenuPrincipal,MenuRedesSociales,ComentariosPost,ZonasCentroAyuda,Archivos,AlbumGaleria,ImagenesGaleriaAlbum,TelefonoCentroAyuda,CategoriaPostContenido,PostContenido,Videos,Noticias,PostContenidoSubCategoria,ContenidoSubCategoria,Bloguero
+from reproductivaApp.models import CentroAyuda,Post,CategoriaPost,Estado,CategoriaImagen,ImagenesGaleria,MenuPrincipal,MenuRedesSociales,ComentariosPost,ZonasCentroAyuda,Archivos,AlbumGaleria,ImagenesGaleriaAlbum,TelefonoCentroAyuda,CategoriaPostContenido,PostContenido,Videos,Noticias,PostContenidoSubCategoria,ContenidoSubCategoria,Bloguero,ComentariosPostContenido,DudasFrecuentes
 
 admin.site.register(CentroAyuda)
 admin.site.register(Post)
@@ -32,3 +32,5 @@ admin.site.register(Noticias)
 admin.site.register(PostContenidoSubCategoria)
 admin.site.register(ContenidoSubCategoria)
 admin.site.register(Bloguero)
+admin.site.register(ComentariosPostContenido)
+admin.site.register(DudasFrecuentes)

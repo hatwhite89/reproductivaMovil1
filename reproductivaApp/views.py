@@ -5,9 +5,10 @@ from django.core.mail import EmailMessage
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render,redirect
+from django.urls import reverse
 from django.views import View
 
-from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria,CategoriaPost
+from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria,CategoriaPost,ComentariosPostContenido,DudasFrecuentes
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
@@ -137,6 +138,13 @@ def agregarComentarioBlog(request):
                                     id_post=id_objeto_post)
 
     newComentario.save()
+
+    comentarios_post = ComentariosPost.objects.filter(id_post=id_post)
+    return redirect('/redireccion?id_post='+id_post, { 'id_post':id_post})
+
+def redirigirPaginaBlog(request):
+    id_post = request.GET['id_post']
+    entrada_blog = Post.objects.filter(pk=id_post)
     comentarios_post = ComentariosPost.objects.filter(id_post=id_post)
     return render(request,'blog-post.html',{'post':entrada_blog,'id_post':id_post,'comentariosList':comentarios_post})
 
@@ -190,8 +198,8 @@ def conteido_detalle(request):
 
     id_archivo= request.GET['id_contenido']
     archivo_list= PostContenido.objects.filter(pk=id_archivo)
-
-    return render(request,'contenido2.html',{'post':archivo_list})
+    comentarios_post = ComentariosPostContenido.objects.filter(id_post=id_archivo)
+    return render(request,'contenido2.html',{'post':archivo_list,'id_post':id_archivo,'comentariosList':comentarios_post})
 
 def videos(request):
     list_video= Videos.objects.all()
@@ -201,7 +209,8 @@ def videos(request):
 #CONTENIDO CON SUBCATEGORIA
 def list_view_contenido_subcategoria(request):
     id_contenido= request.GET['id_contenido']
-    lista_contenido_detalle=ContenidoSubCategoria.objects.filter(categoriaPrincipal=id_contenido)
+    id_contenido2 = request.GET['id_contenido2']
+    lista_contenido_detalle=ContenidoSubCategoria.objects.filter(categoriaPrincipal=id_contenido )
 
 
 
@@ -231,7 +240,7 @@ def blog_detalle_tema(request):
 
     id_archivo= request.GET['id_contenido']
     archivo_list= Post.objects.filter(pk=id_archivo)
-    return render(request,'contenido_detalle_blog.html',{'post':archivo_list})
+    return render(request,'contenido_detalle_blog.html',{'post':archivo_list,'id_post':id_archivo})
 
 
 class contacto(View):
@@ -246,7 +255,7 @@ class contacto(View):
             email=request.POST['correo']
             titulo=request.POST['asunto']
             contenid = request.POST['contenido']
-            email = EmailMessage(titulo, contenid+" este correo se envio de"+email, to=['reproductivahn@gmail.com'], from_email=email)
+            email = EmailMessage(titulo, contenid+" este correo se envio de "+email, to=['reproductivahn@gmail.com'], from_email=email)
             #email.body=form.contenido
             email.send()
 
@@ -257,3 +266,36 @@ class contacto(View):
 def salto_mensaje(request):
 
     return render(request,'index.html',{'mensaje':'verdadero'})
+
+#COMENTARIOS DEL BLOG CONTENIDO
+
+@login_required()
+def agregarComentarioBlogContenido(request):
+
+    id_post = request.GET['id_post']
+    id_objeto_post=PostContenido.objects.get(pk=id_post)
+
+    newComentario = ComentariosPostContenido(estado=Estado.objects.get(id=1),
+                                    cuerpo= request.GET['cuerpo'],
+                                    fecha_publicacion=time.strftime("%Y-%m-%d"),
+                                    usuario=request.user,
+                                    id_post=id_objeto_post)
+
+    newComentario.save()
+
+    return redirect('/redireccion2?id_post='+id_post, { 'id_post':id_post})
+
+def redirigirPaginaBlogContenido(request):
+    id_post = request.GET['id_post']
+    entrada_blog = PostContenido.objects.filter(pk=id_post)
+    comentarios_post = ComentariosPostContenido.objects.filter(id_post=id_post)
+    return render(request,'contenido2.html',{'post':entrada_blog,'id_post':id_post,'comentariosList':comentarios_post})
+
+def dudasFrecuentes(request):
+    lista_preguntas= DudasFrecuentes.objects.all()
+    return render (request,'dudas_frecuentes.html',{'lista_preguntas':lista_preguntas})
+
+def detalleDudasFrecuentes(request):
+    id_detalle=request.GET['id_detalle']
+    detalle= DudasFrecuentes.objects.filter(pk=id_detalle)
+    return render(request,'detalle_dudas.html',{'detalle':detalle})

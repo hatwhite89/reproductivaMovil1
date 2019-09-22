@@ -227,3 +227,20 @@ class ComentariosPost(models.Model):
     usuario = models.CharField(max_length=50)
     estado = models.ForeignKey(Estado, on_delete=models.CASCADE, )
     id_post = models.ForeignKey(Post, on_delete=models.CASCADE, )
+
+#COMENTARIOS DE CONTENIDO
+class ComentariosPostContenido(models.Model):
+    cuerpo = RichTextField()
+    fecha_publicacion = models.DateField()
+    usuario = models.CharField(max_length=50)
+    estado = models.ForeignKey(Estado, on_delete=models.CASCADE, )
+    id_post = models.ForeignKey(PostContenido, on_delete=models.CASCADE, )
+
+class DudasFrecuentes(models.Model):
+        pregunta= RichTextField()
+        respuesta=RichTextField()
+        fecha_publicacion=models.DateField()
+        usuario_registro=models.ForeignKey(User,on_delete=models.CASCADE,)
+
+        def __str__(self):
+            return self.pregunta
