@@ -8,7 +8,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse
 from django.views import View
 
-from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria,CategoriaPost,ComentariosPostContenido,DudasFrecuentes
+from reproductivaApp.models import MenuPrincipal,MenuRedesSociales,Post,ComentariosPost,Estado,ZonasCentroAyuda,CentroAyuda,Archivos,ImagenesGaleriaAlbum,AlbumGaleria,TelefonoCentroAyuda,PostContenido,Videos,PostContenidoSubCategoria,ContenidoSubCategoria,CategoriaPost,ComentariosPostContenido,DudasFrecuentes,Noticias
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic.list import ListView
 from django.contrib.auth.forms import UserCreationForm
@@ -39,8 +39,8 @@ def chat(request):
 # Create your views here.
 
 def main(request):
-
-    return render(request,'index.html',)
+    lista_noticias=Noticias.objects.all()
+    return render(request,'index.html',{'lista_noticias':lista_noticias})
 
 #DEBE LISTAR TODAS LAS ZONAS PARA LOS CENTROS DE AYUDA
 def zonas_list(request):
@@ -299,3 +299,8 @@ def detalleDudasFrecuentes(request):
     id_detalle=request.GET['id_detalle']
     detalle= DudasFrecuentes.objects.filter(pk=id_detalle)
     return render(request,'detalle_dudas.html',{'detalle':detalle})
+
+def detalleNoticias(request):
+     id_noticia= request.GET['id_noticia']
+     noticia=Noticias.objects.filter(pk=id_noticia)
+     return render (request,'detalle_noticia.html',{'noticia':noticia})

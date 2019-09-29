@@ -102,6 +102,25 @@ En este momento estamos aplicando las mejoras que nos han sugerido, esto nos tom
             </div>
 		</div>
 <!--FINAL DE CARACTERISTICAS-->
+        <div class="content-box shadow-large bg-white">
+
+            {% for item in lista_noticias %}
+                 <div class="blog-post-home top-20">
+                <a href="#"><img src="/media/{{ item.imagen_portada }}" data-src="/media/{{ item.imagen_portada }}" class="preload-image responsive-image"></a>
+                <strong class="font-17">{{ item.titulo }}</strong>
+
+                <div class="blog-post-stats">
+
+
+
+                    <div class="clear"></div>
+                </div>
+                {{ item.resumen| safe }}
+            </div>
+                <a href="{% url 'detalle_noticia'  %}?id_noticia={{ item.id }}" class="center-text">Leer mas</a>
+            {% endfor %}
+        <br>
+        </div>
     </div>
 
 
