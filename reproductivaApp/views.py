@@ -243,25 +243,7 @@ def blog_detalle_tema(request):
     return render(request,'contenido_detalle_blog.html',{'post':archivo_list,'id_post':id_archivo})
 
 
-class contacto(View):
-    def get(self,request):
-        form=correo()
-        return render(request,'email.html',{'forma':form})
 
-    def post(self,request):
-        form=correo(request.POST)
-        if form.is_valid():
-            datos=form.cleaned_data
-            email=request.POST['correo']
-            titulo=request.POST['asunto']
-            contenid = request.POST['contenido']
-            email = EmailMessage(titulo, contenid+" este correo se envio de "+email, to=['reproductivahn@gmail.com'], from_email=email)
-            #email.body=form.contenido
-            email.send()
-
-            return HttpResponseRedirect('/salto_mensaje')
-
-        return render(request,'email.html',{'forma':form})
 
 def salto_mensaje(request):
 
