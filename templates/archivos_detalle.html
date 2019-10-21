@@ -21,8 +21,9 @@
                                 </p>
 <br>
  <span class="font-15 center-text ">Autor: {{ item.autor }}</span>
-                                         <a  href="/media/{{item.archivo}}" type="button" class="button-center-large button button-round button-magenta  shadow-icon-large uppercase ultrabold bottom-30">DESCARGAR</a>
-<a href="#" onclick="window.open('/media/{{item.archivo}}')">Abrir archivo pdf</a>
+                                    
+                 <embed src="/media/{{item.archivo}}" width="500" height="375"
+ type="application/pdf">
                         <a target="_blank" href="/media/{{item.archivo}}" type="button" class="button-center-large button button-round button-magenta  shadow-icon-large uppercase ultrabold bottom-30">DESCARGAR</a>
                         <span class="color-black">Publicado por: {{ item.usuario_creo}}</span><br>
                  <span class="color-black">Fecha : {{ item.fecha_publicacion}}</span>
