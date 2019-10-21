@@ -21,9 +21,10 @@
                                 </p>
 <br>
  <span class="font-15 center-text ">Autor: {{ item.autor }}</span>
-                                    
-                 <embed src="/media/{{item.archivo}}" width="500" height="375"
- type="application/pdf">
+                                         <a  href="/media/{{item.archivo}}" type="button" class="button-center-large button button-round button-magenta  shadow-icon-large uppercase ultrabold bottom-30">DESCARGAR</a>
+<a href="https://docs.google.com/viewer?url=http://167.71.246.236:8000/media/archivos/Superviviencia.pdf">Abrir archivo pdf</a>
+              
+
                         <a target="_blank" href="/media/{{item.archivo}}" type="button" class="button-center-large button button-round button-magenta  shadow-icon-large uppercase ultrabold bottom-30">DESCARGAR</a>
                         <span class="color-black">Publicado por: {{ item.usuario_creo}}</span><br>
                  <span class="color-black">Fecha : {{ item.fecha_publicacion}}</span>
